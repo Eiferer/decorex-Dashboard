@@ -1,0 +1,1018 @@
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    name: FISH TANK
+    icon: mdi:power-settings
+    show_icon: true
+    show_state: false
+    tap_action:
+      action: none
+    styles:
+      card:
+        - background-color: "#2c2c2c"
+        - border: 2px solid
+        - border-radius: 12px
+        - height: 45px
+        - display: flex
+        - align-items: center
+        - justify-content: center
+        - box-shadow: none
+      name:
+        - color: "#ffcc80"
+        - font-size: 21px
+        - font-weight: bold
+        - margin-top: "-10px"
+      icon:
+        - color: "#ffcc80"
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: switch.sonoff_fishtank_light
+        name: Light
+        icon: mdi:toggle-switch
+        show_state: false
+        layout: icon_name_state
+        styles:
+          card:
+            - height: 50px
+            - padding: 0 16px
+            - display: flex
+            - align-items: center
+            - justify-content: flex-start
+            - border-radius: 20px
+            - box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)
+            - font-weight: 500
+            - transition: all 0.3s ease
+            - border: 1px solid gray
+          icon:
+            - margin-left: "-8px"
+            - margin-right: 20px
+          name:
+            - font-size: 13px
+            - margin-left: "-50px"
+        state:
+          - value: "off"
+            styles:
+              card:
+                - background-color: "#000000"
+                - color: white
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+            icon: mdi:toggle-switch-off
+          - value: "on"
+            styles:
+              card:
+                - background-color: "#000000"
+                - color: black
+                - border: 1px solid green
+              icon:
+                - color: green
+              name:
+                - color: white
+            icon: mdi:toggle-switch
+      - type: custom:button-card
+        entity: switch.sonoff_fishtank_heater
+        name: Heater
+        icon: mdi:toggle-switch
+        show_state: false
+        layout: icon_name_state
+        styles:
+          card:
+            - height: 50px
+            - padding: 0 16px
+            - display: flex
+            - align-items: center
+            - justify-content: flex-start
+            - border-radius: 20px
+            - box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)
+            - font-weight: 500
+            - transition: all 0.3s ease
+            - border: 1px solid gray
+          icon:
+            - margin-left: "-8px"
+            - margin-right: 20px
+          name:
+            - font-size: 13px
+            - margin-left: "-50px"
+        state:
+          - value: "off"
+            styles:
+              card:
+                - background-color: "#000000"
+                - color: white
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+            icon: mdi:toggle-switch-off
+          - value: "on"
+            styles:
+              card:
+                - background-color: "#000000"
+                - color: black
+                - border: 1px solid green
+              icon:
+                - color: green
+              name:
+                - color: white
+            icon: mdi:toggle-switch
+      - type: custom:button-card
+        entity: switch.sonoff_fishtankpump
+        name: Pump
+        icon: mdi:toggle-switch
+        show_state: false
+        layout: icon_name_state
+        styles:
+          card:
+            - height: 50px
+            - padding: 0 16px
+            - display: flex
+            - align-items: center
+            - justify-content: flex-start
+            - border-radius: 20px
+            - box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)
+            - font-weight: 500
+            - transition: all 0.3s ease
+            - border: 1px solid gray
+          icon:
+            - margin-left: "-8px"
+            - margin-right: 20px
+          name:
+            - font-size: 13px
+            - margin-left: "-50px"
+        state:
+          - value: "off"
+            styles:
+              card:
+                - background-color: "#000000"
+                - color: white
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+            icon: mdi:toggle-switch-off
+          - value: "on"
+            styles:
+              card:
+                - background-color: "#000000"
+                - color: black
+                - border: 1px solid green
+              icon:
+                - color: green
+              name:
+                - color: white
+            icon: mdi:toggle-switch
+  - type: custom:button-card
+    name: POWER MEASURING
+    icon: mdi:power-settings
+    show_icon: true
+    show_state: false
+    tap_action:
+      action: none
+    styles:
+      card:
+        - background-color: "#2c2c2c"
+        - border: 2px solid
+        - border-radius: 12px
+        - height: 45px
+        - display: flex
+        - align-items: center
+        - justify-content: center
+        - box-shadow: none
+      name:
+        - color: "#ffcc80"
+        - font-size: 21px
+        - font-weight: bold
+        - margin-top: "-10px"
+      icon:
+        - color: "#ffcc80"
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: sensor.sonoff_1002201bf3_power
+        name: POWCT
+        show_state: true
+        state:
+          - value: null
+            styles:
+              card:
+                - border: 1px solid green
+              icon:
+                - color: green
+              name:
+                - color: white
+              state:
+                - color: white
+          - operator: template
+            value: |
+              [[[ return parseFloat(entity.state) > 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+              state:
+                - color: red
+          - operator: template
+            value: >
+              [[[ return parseFloat(entity.state) > 0 &&
+              parseFloat(entity.state) <= 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid yellow
+              icon:
+                - color: orange
+              name:
+                - color: white
+              state:
+                - color: orange
+        styles:
+          card:
+            - background-color: black
+            - border-radius: 15px
+            - height: 60px
+            - padding: 8px 16px
+            - box-shadow: 0 3px 8px rgba(0,0,0,0.3)
+          name:
+            - font-weight: 600
+            - font-size: 16px
+            - color: white
+          state:
+            - font-size: 18px
+            - color: white
+          icon:
+            - color: white
+        icon: mdi:transmission-tower
+        tap_action:
+          action: more-info
+      - type: custom:button-card
+        entity: sensor.sonoff_1002201bf3_energy_day
+        name: POWCT Daily
+        show_state: true
+        state:
+          - value: null
+            styles:
+              card:
+                - border: 1px solid green
+              icon:
+                - color: green
+              name:
+                - color: white
+              state:
+                - color: white
+          - operator: template
+            value: |
+              [[[ return parseFloat(entity.state) > 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+              state:
+                - color: red
+          - operator: template
+            value: >
+              [[[ return parseFloat(entity.state) > 0 &&
+              parseFloat(entity.state) <= 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid blue
+              icon:
+                - color: orange
+              name:
+                - color: white
+              state:
+                - color: orange
+        styles:
+          card:
+            - background-color: black
+            - border-radius: 15px
+            - height: 60px
+            - padding: 8px 16px
+            - box-shadow: 0 3px 8px rgba(0,0,0,0.3)
+          name:
+            - font-weight: 600
+            - font-size: 16px
+            - color: white
+          state:
+            - font-size: 18px
+            - color: white
+          icon:
+            - color: white
+        icon: mdi:transmission-tower
+        tap_action:
+          action: more-info
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: sensor.sonoff_10016fde80_power
+        name: POW R320
+        show_state: true
+        state:
+          - value: null
+            styles:
+              card:
+                - border: 1px solid green
+              icon:
+                - color: green
+              name:
+                - color: white
+              state:
+                - color: white
+          - operator: template
+            value: |
+              [[[ return parseFloat(entity.state) > 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+              state:
+                - color: red
+          - operator: template
+            value: >
+              [[[ return parseFloat(entity.state) > 0 &&
+              parseFloat(entity.state) <= 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid yellow
+              icon:
+                - color: orange
+              name:
+                - color: white
+              state:
+                - color: orange
+        styles:
+          card:
+            - background-color: black
+            - border-radius: 15px
+            - height: 60px
+            - padding: 8px 16px
+            - box-shadow: 0 3px 8px rgba(0,0,0,0.3)
+          name:
+            - font-weight: 600
+            - font-size: 16px
+            - color: white
+          state:
+            - font-size: 18px
+            - color: white
+          icon:
+            - color: white
+        icon: mdi:transmission-tower
+        tap_action:
+          action: more-info
+      - type: custom:button-card
+        entity: sensor.sonoff_10016fde80_energy_day
+        name: POWR320 Daily
+        show_state: true
+        state:
+          - value: null
+            styles:
+              card:
+                - border: 1px solid green
+              icon:
+                - color: green
+              name:
+                - color: white
+              state:
+                - color: white
+          - operator: template
+            value: |
+              [[[ return parseFloat(entity.state) > 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+              state:
+                - color: red
+          - operator: template
+            value: >
+              [[[ return parseFloat(entity.state) > 0 &&
+              parseFloat(entity.state) <= 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid blue
+              icon:
+                - color: orange
+              name:
+                - color: white
+              state:
+                - color: orange
+        styles:
+          card:
+            - background-color: black
+            - border-radius: 15px
+            - height: 60px
+            - padding: 8px 16px
+            - box-shadow: 0 3px 8px rgba(0,0,0,0.3)
+          name:
+            - font-weight: 600
+            - font-size: 16px
+            - color: white
+          state:
+            - font-size: 18px
+            - color: white
+          icon:
+            - color: white
+        icon: mdi:transmission-tower
+        tap_action:
+          action: more-info
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: sensor.sonoff_1002201bf3_energy_month
+        name: POWCT Weekly
+        show_state: true
+        state:
+          - value: null
+            styles:
+              card:
+                - border: 1px solid green
+              icon:
+                - color: green
+              name:
+                - color: white
+              state:
+                - color: white
+          - operator: template
+            value: |
+              [[[ return parseFloat(entity.state) > 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+              state:
+                - color: red
+          - operator: template
+            value: >
+              [[[ return parseFloat(entity.state) > 0 &&
+              parseFloat(entity.state) <= 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+              state:
+                - color: orange
+        styles:
+          card:
+            - background-color: black
+            - border-radius: 15px
+            - height: 60px
+            - padding: 8px 16px
+            - box-shadow: 0 3px 8px rgba(0,0,0,0.3)
+          name:
+            - font-weight: 600
+            - font-size: 16px
+            - color: white
+          state:
+            - font-size: 18px
+            - color: white
+          icon:
+            - color: white
+        icon: mdi:transmission-tower
+        tap_action:
+          action: more-info
+      - type: custom:button-card
+        entity: sensor.sonoff_10016fde80_energy_month
+        name: POWR320 Weekly
+        show_state: true
+        state:
+          - value: null
+            styles:
+              card:
+                - border: 1px solid green
+              icon:
+                - color: green
+              name:
+                - color: white
+              state:
+                - color: white
+          - operator: template
+            value: |
+              [[[ return parseFloat(entity.state) > 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+              state:
+                - color: red
+          - operator: template
+            value: >
+              [[[ return parseFloat(entity.state) > 0 &&
+              parseFloat(entity.state) <= 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+              state:
+                - color: orange
+        styles:
+          card:
+            - background-color: black
+            - border-radius: 15px
+            - height: 60px
+            - padding: 8px 16px
+            - box-shadow: 0 3px 8px rgba(0,0,0,0.3)
+          name:
+            - font-weight: 600
+            - font-size: 16px
+            - color: white
+          state:
+            - font-size: 18px
+            - color: white
+          icon:
+            - color: white
+        icon: mdi:transmission-tower
+        tap_action:
+          action: more-info
+  - type: custom:button-card
+    name: WATER TANK
+    icon: mdi:power-settings
+    show_icon: true
+    show_state: false
+    tap_action:
+      action: none
+    styles:
+      card:
+        - background-color: "#2c2c2c"
+        - border: 2px solid
+        - border-radius: 12px
+        - height: 45px
+        - display: flex
+        - align-items: center
+        - justify-content: center
+        - box-shadow: none
+      name:
+        - color: "#ffcc80"
+        - font-size: 21px
+        - font-weight: bold
+        - margin-top: "-10px"
+      icon:
+        - color: "#ffcc80"
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: binary_sensor.sonoff_snzb_05p
+        name: WATERLEAK
+        show_state: true
+        state:
+          - value: "on"
+            color: red
+            icon: mdi:water-alert
+            styles:
+              card:
+                - animation: blink 1s ease infinite
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+              state:
+                - color: red
+          - value: "off"
+            color: blue
+            icon: mdi:water-off
+            styles:
+              card:
+                - border: 1px solid blue
+              icon:
+                - color: blue
+              name:
+                - color: white
+              state:
+                - color: blue
+        styles:
+          card:
+            - background-color: black
+            - border-radius: 15px
+            - height: 60px
+            - padding: 8px 16px
+            - box-shadow: 0 3px 8px rgba(0,0,0,0.3)
+          name:
+            - font-weight: 600
+            - font-size: 16px
+            - color: white
+          state:
+            - font-size: 18px
+          icon:
+            - color: white
+        tap_action:
+          action: more-info
+      - type: custom:button-card
+        entity: binary_sensor.sonoff_snzb_05p_2
+        name: WATERLEAK2
+        show_state: true
+        state:
+          - value: "on"
+            color: red
+            icon: mdi:water-alert
+            styles:
+              card:
+                - animation: blink 1s ease infinite
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+              state:
+                - color: red
+          - value: "off"
+            color: blue
+            icon: mdi:water-off
+            styles:
+              card:
+                - border: 1px solid blue
+              icon:
+                - color: blue
+              name:
+                - color: white
+              state:
+                - color: blue
+        styles:
+          card:
+            - background-color: black
+            - border-radius: 15px
+            - height: 60px
+            - padding: 8px 16px
+            - box-shadow: 0 3px 8px rgba(0,0,0,0.3)
+          name:
+            - font-weight: 600
+            - font-size: 16px
+            - color: white
+          state:
+            - font-size: 18px
+          icon:
+            - color: white
+        tap_action:
+          action: more-info
+  - type: custom:button-card
+    name: PLANT SPRAY ROOM
+    icon: mdi:power-settings
+    show_icon: true
+    show_state: false
+    tap_action:
+      action: none
+    styles:
+      card:
+        - background-color: "#2c2c2c"
+        - border: 2px solid
+        - border-radius: 12px
+        - height: 45px
+        - display: flex
+        - align-items: center
+        - justify-content: center
+        - box-shadow: none
+      name:
+        - color: "#ffcc80"
+        - font-size: 21px
+        - font-weight: bold
+        - margin-top: "-10px"
+      icon:
+        - color: "#ffcc80"
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: sensor.sonoff_10017705f5_humidity
+        name: Moisture
+        show_state: true
+        state:
+          - value: null
+            styles:
+              card:
+                - border: 1px solid green
+              icon:
+                - color: green
+              name:
+                - color: white
+              state:
+                - color: white
+          - operator: template
+            value: |
+              [[[ return parseFloat(entity.state) > 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+              state:
+                - color: red
+          - operator: template
+            value: >
+              [[[ return parseFloat(entity.state) > 0 &&
+              parseFloat(entity.state) <= 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+              state:
+                - color: orange
+        styles:
+          card:
+            - background-color: black
+            - border-radius: 15px
+            - height: 60px
+            - padding: 8px 16px
+            - box-shadow: 0 3px 8px rgba(0,0,0,0.3)
+          name:
+            - font-weight: 600
+            - font-size: 16px
+            - color: white
+          state:
+            - font-size: 18px
+            - color: white
+          icon:
+            - color: white
+        icon: mdi:transmission-tower
+        tap_action:
+          action: more-info
+      - type: custom:button-card
+        entity: sensor.sonoff_snzb_02wd_humidity
+        name: Humidity
+        show_state: true
+        state:
+          - value: null
+            styles:
+              card:
+                - border: 1px solid green
+              icon:
+                - color: green
+              name:
+                - color: white
+              state:
+                - color: white
+          - operator: template
+            value: |
+              [[[ return parseFloat(entity.state) > 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+              state:
+                - color: red
+          - operator: template
+            value: >
+              [[[ return parseFloat(entity.state) > 0 &&
+              parseFloat(entity.state) <= 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+              state:
+                - color: orange
+        styles:
+          card:
+            - background-color: black
+            - border-radius: 15px
+            - height: 60px
+            - padding: 8px 16px
+            - box-shadow: 0 3px 8px rgba(0,0,0,0.3)
+          name:
+            - font-weight: 600
+            - font-size: 16px
+            - color: white
+          state:
+            - font-size: 18px
+            - color: white
+          icon:
+            - color: white
+        icon: mdi:transmission-tower
+        tap_action:
+          action: more-info
+      - type: custom:button-card
+        entity: sensor.sonoff_snzb_02wd_temperature
+        name: Temperature
+        show_state: true
+        state:
+          - value: null
+            styles:
+              card:
+                - border: 1px solid green
+              icon:
+                - color: green
+              name:
+                - color: white
+              state:
+                - color: white
+          - operator: template
+            value: |
+              [[[ return parseFloat(entity.state) > 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+              state:
+                - color: red
+          - operator: template
+            value: >
+              [[[ return parseFloat(entity.state) > 0 &&
+              parseFloat(entity.state) <= 3000; ]]]
+            styles:
+              card:
+                - border: 1px solid red
+              icon:
+                - color: red
+              name:
+                - color: white
+              state:
+                - color: orange
+        styles:
+          card:
+            - background-color: black
+            - border-radius: 15px
+            - height: 60px
+            - padding: 8px 16px
+            - box-shadow: 0 3px 8px rgba(0,0,0,0.3)
+          name:
+            - font-weight: 600
+            - font-size: 16px
+            - color: white
+          state:
+            - font-size: 18px
+            - color: white
+          icon:
+            - color: white
+        icon: mdi:transmission-tower
+        tap_action:
+          action: more-info
+  - type: custom:button-card
+    name: WATER TANK
+    icon: mdi:power-settings
+    show_icon: true
+    show_state: false
+    tap_action:
+      action: none
+    styles:
+      card:
+        - background-color: "#2c2c2c"
+        - border: 2px solid
+        - border-radius: 12px
+        - height: 45px
+        - display: flex
+        - align-items: center
+        - justify-content: center
+        - box-shadow: none
+      name:
+        - color: "#ffcc80"
+        - font-size: 21px
+        - font-weight: bold
+        - margin-top: "-10px"
+      icon:
+        - color: "#ffcc80"
+  - type: custom:button-card
+    entity: sensor.water_tank_perc
+    name: Tank Level
+    show_state: true
+    state:
+      - value: null
+        styles:
+          card:
+            - border: 1px solid green
+          icon:
+            - color: green
+          name:
+            - color: white
+          state:
+            - color: white
+      - operator: template
+        value: |
+          [[[ return parseFloat(entity.state) > 3000; ]]]
+        styles:
+          card:
+            - border: 1px solid red
+          icon:
+            - color: red
+          name:
+            - color: white
+          state:
+            - color: red
+      - operator: template
+        value: >
+          [[[ return parseFloat(entity.state) > 0 && parseFloat(entity.state) <=
+          3000; ]]]
+        styles:
+          card:
+            - border: 1px solid red
+          icon:
+            - color: red
+          name:
+            - color: white
+          state:
+            - color: orange
+    styles:
+      card:
+        - background-color: black
+        - border-radius: 15px
+        - height: 60px
+        - padding: 8px 16px
+        - box-shadow: 0 3px 8px rgba(0,0,0,0.3)
+      name:
+        - font-weight: 600
+        - font-size: 16px
+        - color: white
+      state:
+        - font-size: 18px
+        - color: white
+      icon:
+        - color: white
+    icon: mdi:transmission-tower
+    tap_action:
+      action: more-info
+  - type: custom:button-card
+    entity: sensor.tank_flow_sensor_flow_rate
+    name: Tank Level
+    show_state: true
+    state:
+      - value: null
+        styles:
+          card:
+            - border: 1px solid green
+          icon:
+            - color: green
+          name:
+            - color: white
+          state:
+            - color: white
+      - operator: template
+        value: |
+          [[[ return parseFloat(entity.state) > 3000; ]]]
+        styles:
+          card:
+            - border: 1px solid red
+          icon:
+            - color: red
+          name:
+            - color: white
+          state:
+            - color: red
+      - operator: template
+        value: >
+          [[[ return parseFloat(entity.state) > 0 && parseFloat(entity.state) <=
+          3000; ]]]
+        styles:
+          card:
+            - border: 1px solid red
+          icon:
+            - color: red
+          name:
+            - color: white
+          state:
+            - color: orange
+    styles:
+      card:
+        - background-color: black
+        - border-radius: 15px
+        - height: 60px
+        - padding: 8px 16px
+        - box-shadow: 0 3px 8px rgba(0,0,0,0.3)
+      name:
+        - font-weight: 600
+        - font-size: 16px
+        - color: white
+      state:
+        - font-size: 18px
+        - color: white
+      icon:
+        - color: white
+    icon: mdi:transmission-tower
+    tap_action:
+      action: more-info
