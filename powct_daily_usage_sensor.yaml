@@ -1,0 +1,59 @@
+type: custom:button-card
+entity: sensor.sonoff_1002201bf3_energy_day
+name: POWCT Daily
+show_state: true
+state:
+  - value: null
+    styles:
+      card:
+        - border: 1px solid green
+      icon:
+        - color: green
+      name:
+        - color: white
+      state:
+        - color: white
+  - operator: template
+    value: |
+      [[[ return parseFloat(entity.state) > 3000; ]]]
+    styles:
+      card:
+        - border: 1px solid red
+      icon:
+        - color: red
+      name:
+        - color: white
+      state:
+        - color: red
+  - operator: template
+    value: >
+      [[[ return parseFloat(entity.state) > 0 && parseFloat(entity.state) <=
+      3000; ]]]
+    styles:
+      card:
+        - border: 1px solid blue
+      icon:
+        - color: orange
+      name:
+        - color: white
+      state:
+        - color: orange
+styles:
+  card:
+    - background-color: black
+    - border-radius: 15px
+    - height: 60px
+    - padding: 8px 16px
+    - box-shadow: 0 3px 8px rgba(0,0,0,0.3)
+  name:
+    - font-weight: 600
+    - font-size: 16px
+    - color: white
+  state:
+    - font-size: 18px
+    - color: white
+  icon:
+    - color: white
+icon: mdi:transmission-tower
+tap_action:
+  action: more-info
