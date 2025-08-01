@@ -1,0 +1,47 @@
+type: custom:button-card
+entity: binary_sensor.sonoff_snzb_05p
+name: WATERLEAK
+show_state: true
+state:
+  - value: "on"
+    color: red
+    icon: mdi:water-alert
+    styles:
+      card:
+        - animation: blink 1s ease infinite
+        - border: 1px solid red
+      icon:
+        - color: red
+      name:
+        - color: white
+      state:
+        - color: red
+  - value: "off"
+    color: blue
+    icon: mdi:water-off
+    styles:
+      card:
+        - border: 1px solid blue
+      icon:
+        - color: blue
+      name:
+        - color: white
+      state:
+        - color: blue
+styles:
+  card:
+    - background-color: black
+    - border-radius: 15px
+    - height: 60px
+    - padding: 8px 16px
+    - box-shadow: 0 3px 8px rgba(0,0,0,0.3)
+  name:
+    - font-weight: 600
+    - font-size: 16px
+    - color: white
+  state:
+    - font-size: 18px
+  icon:
+    - color: white
+tap_action:
+  action: more-info
