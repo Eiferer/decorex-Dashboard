@@ -1,0 +1,24 @@
+type: custom:button-card
+name: FISH TANK
+icon: mdi:power-settings
+show_icon: true
+show_state: false
+tap_action:
+  action: none
+styles:
+  card:
+    - background-color: "#2c2c2c"
+    - border: 2px solid
+    - border-radius: 12px
+    - height: 45px
+    - display: flex
+    - align-items: center
+    - justify-content: center
+    - box-shadow: none
+  name:
+    - color: "#ffcc80"
+    - font-size: 21px
+    - font-weight: bold
+    - margin-top: "-10px"
+  icon:
+    - color: "#ffcc80"
